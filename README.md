@@ -1,4 +1,5 @@
-# editor confs includes: vim & emacs
+# editor confs 
+Includes: vim & emacs
 My original purpose is to set up a new environment easily and quickly for myself.
 
 Not all of the scripts are written by me.
