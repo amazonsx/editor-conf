@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/root/wangan-update'
+let g:netrw_dirhist_2='/root/security_groups'
+let g:netrw_dirhist_3='/root/backpack/mygit/platanus/leetcode/sort_colors'
+let g:netrw_dirhist_4='/root/backpack/mygit/glibc/.git'
+let g:netrw_dirhist_5='/usr/share/openstack-dashboard/openstack_dashboard/dashboards/project/images_and_snapshots/snapshots'
+let g:netrw_dirhist_6='/var/log/horizon'
+let g:netrw_dirhist_7='/root/nginx-1.7.6/src/os/unix'

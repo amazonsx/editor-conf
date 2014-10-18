@@ -1,25 +1,29 @@
 "-------------------------------------------------------------------------------
+" Customized from senior fellow apprentice's vim config
+"-------------------------------------------------------------------------------
+" Bash-support
+"-------------------------------------------------------------------------------
+let g:BASH_AuthorName   = 'amazonsx'
+let g:BASH_AuthorRef    = 'amazonsx'
+let g:BASH_Company      = 'SYS Research Group, CARC, ICT'
+let g:BASH_Email        = 'to be continued'
+
+"-------------------------------------------------------------------------------
 " Use Vim settings, rather then Vi settings.
 " This must be first, because it changes other options as a side effect.
 "-------------------------------------------------------------------------------
 set nocompatible
+filetype  plugin on " Enable file type detection plugin. Use the default filetype settings.
+filetype  indent on " Also load indent files, to automatically do language-dependent indenting.
+syntax    on        " Switch syntax highlighting on.
+
 "
 "-------------------------------------------------------------------------------
-" Enable file type detection. Use the default filetype settings.
-" Also load indent files, to automatically do language-dependent indenting.
-"-------------------------------------------------------------------------------
-filetype  plugin on
-filetype  indent on
-"
-"-------------------------------------------------------------------------------
-" Switch syntax highlighting on.
-"-------------------------------------------------------------------------------
-syntax    on            
-"
 " Platform specific items:
 " - central backup directory (has to be created)
 " - default dictionary
 " Uncomment your choice.  
+"-------------------------------------------------------------------------------
 if  has("win16") || has("win32")     || has("win64") || 
   \ has("win95") || has("win32unix")
     "
@@ -30,17 +34,18 @@ else
 "    set backupdir =$HOME/.vim.backupdir
 "    set dictionary=$HOME/.vim/wordlists/german.list
 endif
-"
-" Using a backupdir under UNIX/Linux: you may want to include a line similar to
-"   find  $HOME/.vim.backupdir -name "*" -type f -mtime +60 -exec rm -f {} \;
-" in one of your shell startup files (e.g. $HOME/.profile)
-"
+
 "-------------------------------------------------------------------------------
 " Various settings
 "-------------------------------------------------------------------------------
-set number 			" show the line number
+" Using a backupdir under UNIX/Linux: you may want to include a line similar to
+"   find  $HOME/.vim.backupdir -name "*" -type f -mtime +60 -exec rm -f {} \;
+" in one of your shell startup files (e.g. $HOME/.profile)
+" set backupdir=./.vim-backup,.
+" set directory=./.vim-backup,.
+set number 			            " show the line number
 set autoindent                  " copy indent from current line
-set autoread                    " read open files again when changed outside Vim
+"set autoread                    " read open files again when changed outside Vim
 set autowrite                   " write a modified buffer on each :next , ...
 set backspace=indent,eol,start  " backspacing over everything in insert mode
 "set backup                      " keep a backup file
@@ -75,19 +80,13 @@ set tags=tags;:mrgreen:
 let g:EchoFuncShowOnStatus = 1     
 set statusline=%f%*\ %y\ %2*%r%m%*\ %l,%c\ %=%l/%L\ (%p%%)%*\ %{strftime('%Y-%m-%d-%H:%M')}  "\  %{EchoFuncGetStatusLine()} 
 set fileencodings=utf-8,gbk,ucs-bom,cp936
+
 "
-"===================================================================================
+"-------------------------------------------------------------------------------
 " BUFFERS, WINDOWS
-"===================================================================================
-"
-"bash-support
-let g:BASH_AuthorName   = 'liuan'
-let g:BASH_AuthorRef    = 'liuan'
-let g:BASH_Company      = 'SYSSW Group, NCIC,ICT,CAS.'
-let g:BASH_Email        = 'liuan@ncic.ac.cn'
 "-------------------------------------------------------------------------------
+
 " The current directory is the directory of the file in the current window.
-"-------------------------------------------------------------------------------
 if has("autocmd")
   autocmd BufEnter * :lchdir %:p:h
 endif
@@ -107,12 +106,9 @@ inoremap  <C-Esc>  <C-C>:close<CR>
      \                      &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 inoremap  <silent> <s-tab>  <C-C>:if &modifiable && !&readonly && 
      \                      &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
-"
-"-------------------------------------------------------------------------------
-" Leave the editor with Ctrl-q (KDE): Write all changed buffers and exit Vim
-"-------------------------------------------------------------------------------
-nnoremap  <C-q>    :wqall<CR>
-"
+
+nnoremap  <C-q>    :wqall<CR>   " Leave the editor with Ctrl-q (KDE): Write all changed buffers and exit Vim
+
 "-------------------------------------------------------------------------------
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -124,7 +120,7 @@ if has("autocmd")
         \   exe "normal! g`\"" |
         \ endif
 endif " has("autocmd")
-"
+
 "-------------------------------------------------------------------------------
 "  some additional hot keys
 "-------------------------------------------------------------------------------
@@ -136,7 +132,6 @@ endif " has("autocmd")
 "    F7   -  display previous error
 "    F8   -  display next error   
 "-------------------------------------------------------------------------------
-"
 map   <silent> <F2>        :write<CR>
 map   <silent> <F3>        :Explore<CR>
 nmap  <silent> <F4>        :exe ":ptag ".expand("<cword>")<CR>
@@ -152,41 +147,38 @@ imap  <silent> <F5>   <Esc>:copen<CR>
 imap  <silent> <F6>   <Esc>:cclose<CR>
 imap  <silent> <F7>   <Esc>:cp<CR>
 imap  <silent> <F8>   <Esc>:cn<CR>
-"
+
 "-------------------------------------------------------------------------------
 " Fast switching between buffers
 " The current buffer will be saved before switching to the next one.
 " Choose :bprevious or :bnext
 "-------------------------------------------------------------------------------
-"
+
  map  <silent> <s-tab>  <Esc>:if &modifiable && !&readonly && 
      \                  &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 imap  <silent> <s-tab>  <Esc>:if &modifiable && !&readonly && 
      \                  &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
-"
-"-------------------------------------------------------------------------------
-" Leave the editor with Ctrl-q : Write all changed buffers and exit Vim
-"-------------------------------------------------------------------------------
-nmap  <C-q>    :wqa<CR>
-"
+
+nmap  <C-q>    :wqa<CR> " Leave the editor with Ctrl-q : Write all changed buffers and exit Vim
+
 "-------------------------------------------------------------------------------
 " autocomplete parenthesis, brackets and braces
 "-------------------------------------------------------------------------------
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
+"inoremap ( ()<Left>
+"inoremap [ []<Left>
+"inoremap { {}<Left>
 
-vnoremap ( s()<Esc>P<Right>%
-vnoremap [ s[]<Esc>P<Right>%
-vnoremap { s{}<Esc>P<Right>%
-"
+"vnoremap ( s()<Esc>P<Right>%
+"vnoremap [ s[]<Esc>P<Right>%
+"vnoremap { s{}<Esc>P<Right>%
+
 "-------------------------------------------------------------------------------
 " autocomplete quotes (visual and select mode)
 "-------------------------------------------------------------------------------
-xnoremap  '  s''<Esc>P<Right>
-xnoremap  "  s""<Esc>P<Right>
-xnoremap  `  s``<Esc>P<Right>
-"
+"xnoremap  '  s''<Esc>P<Right>
+"xnoremap  \"  s""<Esc>P<Right> remove the slash char
+"xnoremap  `  s``<Esc>P<Right>
+
 "-------------------------------------------------------------------------------
 " Change the working directory to the directory containing the current file
 "-------------------------------------------------------------------------------
@@ -197,13 +189,10 @@ endif " has("autocmd")
 "===================================================================================
 " VARIOUS PLUGIN CONFIGURATIONS
 "===================================================================================
-"
 "-------------------------------------------------------------------------------
 " c.vim
 "-------------------------------------------------------------------------------
-"            
 " --empty --
-"                         
 "-------------------------------------------------------------------------------
 "pydiction 1.2 python auto complete
 let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
@@ -261,22 +250,22 @@ endif
 "endfunction 
 "inoremap <Tab> <C-R>=CleverTab()<CR>
 
-"--ctags setting--
-" map <F1> :!ctags -R --c++-kinds=+p --c-kinds=+p --fields=+ialS --extra=+q .<CR><CR> :TlistUpdate<CR>
-map <F1> :!ctags -R --append=no --exclude="\.svn" --c++-kinds=+cdefgmpstuv --c-kinds=+cdefgmpstuv --fields=+ialS --extra=+fq --fields=+afiKlmnSzt --sort=yes --file-scope=yes .<CR><CR> :TlistUpdate<CR>
-imap <F1> <ESC>:!ctags -R --append=no --exclude="\.svn" --c++-kinds=+cdefgmpstuv --c-kinds=+cdefgmpstuv --fields=+ialS --extra=+fq --fields=+afiKlmnSzt --sort=yes --file-scope=yes .<CR><CR> :TlistUpdate<CR>
-"set tags=tags
-set tags+=./tags "add current directory's generated tags file
-"set tags+=/home/wuzhiwu/virt/linux-2.6.35.9/tags
-set tags+=/root/kernel/linux-2.6.11/tags
-"set tags+=/home/wuzhiwu/mess/pll/glibc/glibc-2.15/tags
+"-------------------------------------------------------------------------------
+" Ctags Settings
+"-------------------------------------------------------------------------------
+map <F1> :!ctags -f /root/backpack/tags/* -R --append=no --exclude="\.git" --c++-kinds=+cdefglmnpstuvx --c-kinds=+cdefglmnpstuvx --fields=+ialS --extra=+fq --fields=+afiKlmnsSzt --sort=yes --file-scope=yes .<CR> :TlistUpdate<CR>
+imap <F2> :!ctags -f /root/backpack/tags/* -R --append=no --exclude="\.git" --c++-kinds=+cdefglmnpstuvx --c-kinds=+cdefglmnpstuvx --fields=+ialS --extra=+fq --fields=+afiKlmnsSzt --sort=yes --file-scope=yes .<CR> :TlistUpdate<CR>
 
-"configure the hotkey for complete_code
-let g:completekey = "<C-j>"   "hotkey
+"-------------------------------------------------------------------------------
+" set tags
+"-------------------------------------------------------------------------------
+" By default, it just reads the tags file in the current dir. We try to keep a tag file per project, how?
+" set tags=tags
+set tags+=/root/backpack/tags/tags
 
-set backupdir=./.vim-backup,.
-set directory=./.vim-backup,.
+" Configure the hotkey for complete_code
+" Auto Completion, only works in insert mode
+let g:completekey = "<C-j>"   
 
 " Setting of cscope
 " set cscopequickfix=s-,c-,d-,i-,t-,e-
-"
