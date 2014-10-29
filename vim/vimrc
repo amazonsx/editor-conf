@@ -79,7 +79,7 @@ set wildmenu                    " command-line completion in an enhanced mode
 set tags=tags;:mrgreen:
 let g:EchoFuncShowOnStatus = 1     
 set statusline=%f%*\ %y\ %2*%r%m%*\ %l,%c\ %=%l/%L\ (%p%%)%*\ %{strftime('%Y-%m-%d-%H:%M')}  "\  %{EchoFuncGetStatusLine()} 
-set fileencodings=utf-8,gbk,ucs-bom,cp936
+set fileencodings=ascii,utf-8,gbk,ucs-bom,cp936
 
 "
 "-------------------------------------------------------------------------------
@@ -253,15 +253,16 @@ endif
 "-------------------------------------------------------------------------------
 " Ctags Settings
 "-------------------------------------------------------------------------------
-map <F1> :!ctags -f /root/backpack/tags/* -R --append=no --exclude="\.git" --c++-kinds=+cdefglmnpstuvx --c-kinds=+cdefglmnpstuvx --fields=+ialS --extra=+fq --fields=+afiKlmnsSzt --sort=yes --file-scope=yes .<CR> :TlistUpdate<CR>
-imap <F2> :!ctags -f /root/backpack/tags/* -R --append=no --exclude="\.git" --c++-kinds=+cdefglmnpstuvx --c-kinds=+cdefglmnpstuvx --fields=+ialS --extra=+fq --fields=+afiKlmnsSzt --sort=yes --file-scope=yes .<CR> :TlistUpdate<CR>
+" Generate tags file
+map <F1> :!ctags -f /root/backpack/classic/* -R --append=no --exclude="\.git" --c++-kinds=+cdefglmnpstuvx --c-kinds=+cdefglmnpstuvx --fields=+ialS --extra=+fq --fields=+afiKlmnsSzt --sort=yes --file-scope=yes .<CR> :TlistUpdate<CR>
+imap <F2> :!ctags -f /root/backpack/classic/* -R --append=no --exclude="\.git" --c++-kinds=+cdefglmnpstuvx --c-kinds=+cdefglmnpstuvx --fields=+ialS --extra=+fq --fields=+afiKlmnsSzt --sort=yes --file-scope=yes .<CR> :TlistUpdate<CR>
 
 "-------------------------------------------------------------------------------
 " set tags
 "-------------------------------------------------------------------------------
+set tags=tags
 " By default, it just reads the tags file in the current dir. We try to keep a tag file per project, how?
-" set tags=tags
-set tags+=/root/backpack/tags/tags
+" set tags+=/root/backpack/tags/tags
 
 " Configure the hotkey for complete_code
 " Auto Completion, only works in insert mode
