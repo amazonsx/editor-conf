@@ -1,3 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =3
 let g:netrw_dirhist_1='/root/backpack/mygit/editor-conf/vim/vim/plugin'
+let g:netrw_dirhist_2='/usr/share/openstack-dashboard/openstack_dashboard/dashboards/project/images_and_snapshots/snapshots'
+let g:netrw_dirhist_3='/root/.vim'

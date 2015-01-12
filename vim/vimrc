@@ -166,12 +166,12 @@ imap  <silent> <F8>   <Esc>:cn<CR>
 "
 " Auto-complete parenthesis, brackets and braces
 "
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
-vnoremap ( s()<Esc>P<Right>%
-vnoremap [ s[]<Esc>P<Right>%
-vnoremap { s{}<Esc>P<Right>%
+"inoremap ( ()<Left>
+"inoremap [ []<Left>
+"inoremap { {}<Left>
+"vnoremap ( s()<Esc>P<Right>%
+"vnoremap [ s[]<Esc>P<Right>%
+"vnoremap { s{}<Esc>P<Right>%
 
 "
 " Auto-complete quotes (visual and select mode)
@@ -263,6 +263,9 @@ endif
 " Generate tags file, covering hot key <F3>.
 map <F3> :!ctags -f=./tags -R --append=no --exclude="\.git" --c++-kinds=+cdefglmnpstuvx --c-kinds=+cdefglmnpstuvx --fields=+ialS --extra=+fq --fields=+afiKlmnsSzt --sort=yes --file-scope=yes .<CR> :TlistUpdate<CR>
 " imap <F4> :!ctags -f=./tags -R --append=no --exclude="\.git" --c++-kinds=+cdefglmnpstuvx --c-kinds=+cdefglmnpstuvx --fields=+ialS --extra=+fq --fields=+afiKlmnsSzt --sort=yes --file-scope=yes .<CR> :TlistUpdate<CR>
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsplit <CR>:exec("tag ".expand("<cword>"))<CR>
+
 
 "
 " set tags
