@@ -8,7 +8,6 @@
 "
 "autocmd Filetype c,cpp set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 "set statusline=%<%f%h%m%r%=style=%{CodingStyleIndent()} \ %15(L%l,C%c%V%)\ %3P
-
 setlocal tabstop=8
 setlocal softtabstop=8
 setlocal shiftwidth=8

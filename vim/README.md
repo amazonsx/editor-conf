@@ -1,16 +1,23 @@
-Vim Settings
+-------------
+Vim Settings:
+-------------
 set backupdir=~/backup/,~/test/,~/
 editing files will be backuped to ~/backup, if the permisssion is not allowed, switch to ~/to and so on.
 By default, the backupdir is the current dir.
-set directory=~/backup, will set the current dir to ~/backup, maybe useful for backups, a complement for set backupdir
+'set directory=~/backup' will set the current dir to ~/backup, 
+maybe useful for backups, as complement for backupdir settings
 
+-------------
 Ask help in Vim:
+-------------
 :help tags
 :help cw
 :help cmd 
-somthing like that
+Somthing like these
 
-Mode for Vim:
+-------------
+Vim Mode List:
+-------------
 normal
 visual 
 select
@@ -18,19 +25,23 @@ operator pending
 insert
 command-line
 
-!cmd can be used to execute external shell cmd, ends with a carriage return.
-like !ls show all the files in the current directory
-cmd . used to repeat cmd execution. Vim records the edit work you did last time in insert mode. '.' just repeat that works.
+':!<cmd>' can be used to execute shell cmd externally, ends with a carriage return.
+For example, !ls shows all the files in the current directory.
+'cmd .' can be used to repeat cmd execution. 
+Vim records the edit work you did last time in insert mode.  '.' just repeat that works.
 
 
-Mapping keys for Vim:
+-------------
+Vim Mapping keys:
+-------------
 general syntax for a map cmd:
 {cmd} {attr} {lhs} {rhs} 
 cmd : :map :map! :nmap :vmap :imap :cmap :smap :xmap :omap :lmap
 attr : optional and one or one more of the folloing <buffer> <silent> <expr> <script> <unique> <special>
-lhs : left hand side, is a sequence of one or more keys that are being mapped 
-rhs : right hand side, is a sequence of keys that {lhs} are being mapped 
-<cr> used for carriage return. if put this after a cmd, you dont need to type carriage return to activate the cmd
+lhs : left hand side, is a sequence of one or more keys that are being mapped.
+rhs : right hand side, is a sequence of keys that {lhs} are being mapped to.
+<cr> can be used for carriage return. 
+If put this after a cmd, there is no need to type carriage return to activate the cmd.
 
 :map works in modes: normal, visual, select, operator pending
 :map! works in modes: insert, command-line
@@ -43,9 +54,11 @@ rhs : right hand side, is a sequence of keys that {lhs} are being mapped
 :omap - Display operator pending mode maps
 
 
+-------------
 Ctags:
+-------------
 Generate tag files for source files.
-This is the guide work for Taglist and OmniCppComplete
+This is a guide for Taglist
 
 Options of ctags
 -R : recursively reading source files 
@@ -66,5 +79,20 @@ But there are circumstances that we just need one tag file of the current projec
 So add it with full path
 set tags+=/dirx/pathx/tags
 
+------------
+OmniCppComplete:
+------------
+
+-------------
 Auto Compelete
+-------------
 only works in insert mode
+
+-------------
+Csindent:
+-------------
+
+------------
+VIM Script:
+------------
+echomsg: show info

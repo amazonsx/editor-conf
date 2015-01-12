@@ -5,6 +5,7 @@
 "shiftwidth: columns jumps per reindent
 "expandtab: replace tab to spaces
 "autocmd Filetype c,cpp set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+
 setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftwidth=4
